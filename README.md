@@ -1,6 +1,6 @@
-# Codex Skin Archive
+# Codex Theme Studio
 
-Payload + Next.js application for a public Codex / ChatGPT Desktop skin archive.
+Payload + Next.js application for the public Codex / ChatGPT Desktop theme studio.
 
 Published metadata and preview images are public. ZIP packages are stored in
 private R2 and are served only through a short-lived, single-use download grant.
