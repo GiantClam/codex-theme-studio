@@ -34,6 +34,6 @@ Optional abuse protection variables:
 3. Set `SKIN_STUDIO_DOWNLOAD_SECRET` with `wrangler secret put SKIN_STUDIO_DOWNLOAD_SECRET`.
 4. Run `npm run generate:types`, then `npm run deploy`.
 
-`npm run deploy` applies Payload migrations to the remote D1 database before deploying the Worker. Rate limiting is attached through two native Cloudflare bindings: five manual submissions per IP per minute and ten GitHub imports per IP per minute. Cloudflare's native binding configuration is documented in [Workers Rate Limiting](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/).
+`npm run deploy` applies Payload migrations to the remote D1 database before deploying the Worker. Rate limiting is attached through three native Cloudflare bindings: five manual submissions, ten GitHub imports, and ten download-grant requests per IP per minute. Cloudflare's native binding configuration is documented in [Workers Rate Limiting](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/).
 
 The current config follows Payload's official `with-cloudflare-d1` template and uses OpenNext for the Worker bundle.

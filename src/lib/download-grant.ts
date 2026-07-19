@@ -53,8 +53,8 @@ export async function verifyDownloadGrant(secret: string, token: string, now = M
   } catch {
     return null
   }
-  if (!payload || typeof payload !== 'object' || payload.v !== 1 || typeof payload.nonce !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(payload.slug) || !/^[0-9a-f]{64}$/i.test(payload.packageSha256) || !Number.isInteger(payload.exp) || payload.exp < now || signature.byteLength !== 32) return null
+  if (!payload || typeof payload !== 'object' || payload.v !== 1 || typeof payload.nonce !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(payload.slug) || !/^[0-9a-f]{64}$/i.test(payload.packageSha256) || !Number.isInteger(payload.exp) || payload.exp <= now || signature.byteLength !== 32) return null
   const key = await crypto.subtle.importKey('raw', encoder.encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['verify'])
-  const valid = await crypto.subtle.verify('HMAC', key, signature, encoder.encode(encodedPayload))
+  const valid = await crypto.subtle.verify('HMAC', key, signature as unknown as BufferSource, encoder.encode(encodedPayload))
   return valid ? payload : null
 }
