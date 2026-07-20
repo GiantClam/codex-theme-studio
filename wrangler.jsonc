@@ -15,7 +15,8 @@
     }
   ],
   "vars": {
-    "TURNSTILE_SITE_KEY": "0x4AAAAAAD4c4ELAdRpUiXSC"
+    "TURNSTILE_SITE_KEY": "0x4AAAAAAD4c4ELAdRpUiXSC",
+    "STUDIO_TEST_UPLOAD_ENABLED": "true"
   },
   "assets": {
     "directory": ".open-next/assets",
