@@ -1,6 +1,10 @@
-# Codex Theme Studio
+# Codex Theme Archive
 
-Payload + Next.js application for the public Codex / ChatGPT Desktop theme studio.
+Payload + Next.js application for the public Codex / ChatGPT Desktop theme archive.
+
+Theme creation and local application are handled by the official
+[Codex Theme Studio Skill](https://github.com/GiantClam/codex-theme-studio-skill).
+This website only publishes reviewed theme packages and provides downloads.
 
 Published metadata and preview images are public. ZIP packages are stored in
 private R2 and are served only through a short-lived, single-use download grant.

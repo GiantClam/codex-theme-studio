@@ -3,7 +3,6 @@ import type { Metadata } from 'next'
 import '../globals.css'
 import '../skin-layout-fixes.css'
 import '../workbench-fidelity.css'
-import '../studio.css'
 
 export const metadata: Metadata = {
   title: 'Codex Theme Archive',
