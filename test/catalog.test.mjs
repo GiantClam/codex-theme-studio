@@ -40,3 +40,11 @@ test('keeps legacy Payload records compatible as theme-only packages', () => {
   assert.equal(skin.pet, null)
   assert.equal(skin.petPreviewUrl, null)
 })
+
+test('does not expose a Pet when paired metadata is incomplete', () => {
+  const skin = mapPayloadSkin({ ...baseSkin, packageKind: 'paired' })
+  assert.equal(skin.packageKind, 'paired')
+  assert.equal(skin.hasPet, false)
+  assert.equal(skin.pet, null)
+  assert.equal(skin.petPreviewUrl, null)
+})

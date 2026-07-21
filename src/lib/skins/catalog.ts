@@ -117,7 +117,7 @@ export function mapPayloadSkin(doc: PayloadSkinLike): SkinSummary | null {
     art,
     status: 'published',
     packageKind,
-    hasPet: packageKind === 'paired',
+    hasPet: Boolean(pet),
     pet,
     petPreviewUrl,
     heroUrl,
