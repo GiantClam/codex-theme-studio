@@ -616,7 +616,7 @@
 .workbench-screen .art-paper-band--orange { background: #f18a36; }
 .workbench-screen .art-paper-band--paper { background: #d9e0dd; }
 .workbench-screen .art-paper-band--mixed { background: #efb63f; }
-.workbench-screen .skin-art--paper:after {
+.workbench-screen .skin-art--has-pet:after {
   position: absolute;
   right: 14px;
   bottom: 12px;
@@ -624,7 +624,7 @@
   height: 58px;
   border: 0;
   background-color: transparent;
-  background-image: url('/pets/mascot-spritesheet.webp');
+  background-image: var(--pet-image);
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: 800% 1100%;

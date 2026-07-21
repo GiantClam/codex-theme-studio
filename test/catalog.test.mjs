@@ -30,6 +30,7 @@ test('maps paired Payload metadata into the public catalog contract', () => {
     displayName: 'Neon Companion Pet',
     contractVersion: 'codex-v2-hatch-pet',
   })
+  assert.equal(skin.petPreviewUrl, '/api/skins/neon-companion/pet-preview')
 })
 
 test('keeps legacy Payload records compatible as theme-only packages', () => {
@@ -37,4 +38,5 @@ test('keeps legacy Payload records compatible as theme-only packages', () => {
   assert.equal(skin.packageKind, 'theme')
   assert.equal(skin.hasPet, false)
   assert.equal(skin.pet, null)
+  assert.equal(skin.petPreviewUrl, null)
 })

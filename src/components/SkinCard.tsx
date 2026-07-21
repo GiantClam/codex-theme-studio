@@ -1,12 +1,17 @@
 import Link from 'next/link'
+import type { CSSProperties } from 'react'
 
 import type { SkinSummary } from '@/lib/skins/catalog'
 
 export function SkinArt({ skin, compact = false }: { skin: SkinSummary; compact?: boolean }) {
   const paletteBands = Array.from(new Set([...skin.palette, 'paper', 'blue', 'cyan'])).slice(0, 3)
+  const style = {
+    ...(skin.heroUrl ? { backgroundImage: `url("${skin.heroUrl}")`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}),
+    ...(skin.petPreviewUrl ? { '--pet-image': `url("${skin.petPreviewUrl}")` } : {}),
+  } as CSSProperties
 
   return (
-    <div className={`skin-art skin-art--${skin.art}${compact ? ' skin-art--compact' : ''}`} style={skin.heroUrl ? { backgroundImage: `url("${skin.heroUrl}")`, backgroundSize: 'cover', backgroundPosition: 'center' } : undefined} aria-label={`${skin.title} preview`}>
+    <div className={`skin-art skin-art--${skin.art}${compact ? ' skin-art--compact' : ''}${skin.petPreviewUrl ? ' skin-art--has-pet' : ''}`} style={style} aria-label={`${skin.title} preview`}>
       <span className="art-grid" />
       {skin.art === 'arcana' && <><span className="art-orb" /><span className="art-constellation">✦ · · ✦</span><span className="art-label">ARCANA / 001</span></>}
       {skin.art === 'oxide' && <><span className="art-oxide-mark">07</span><span className="art-label">OXIDE / FIELD</span></>}

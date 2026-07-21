@@ -25,6 +25,7 @@ export interface SkinSummary {
   packageKind: SkinPackageKind
   hasPet: boolean
   pet: SkinPetSummary | null
+  petPreviewUrl?: string | null
   heroUrl?: string | null
   sourceType?: 'manual' | 'github' | null
   sourceUrl?: string | null
@@ -101,6 +102,7 @@ export function mapPayloadSkin(doc: PayloadSkinLike): SkinSummary | null {
     displayName: doc.petDisplayName,
     contractVersion: doc.petContractVersion,
   } : null
+  const petPreviewUrl = packageKind === 'paired' && pet ? `/api/skins/${encodeURIComponent(doc.slug)}/pet-preview` : null
   return {
     slug: doc.slug,
     title: doc.title,
@@ -117,6 +119,7 @@ export function mapPayloadSkin(doc: PayloadSkinLike): SkinSummary | null {
     packageKind,
     hasPet: packageKind === 'paired',
     pet,
+    petPreviewUrl,
     heroUrl,
     sourceType: doc.sourceType,
     sourceUrl: doc.sourceUrl,
