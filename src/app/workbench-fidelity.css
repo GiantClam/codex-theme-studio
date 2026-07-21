@@ -600,20 +600,37 @@
 
 .workbench-screen .art-paper-line {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  width: 70%;
+  gap: 7px;
+  left: 18px;
+  top: auto;
+  bottom: 42px;
+  width: auto;
   height: auto;
   background: transparent;
   box-shadow: none;
 }
-.workbench-screen .art-paper-band { display: block; width: 100%; height: 14px; }
+.workbench-screen .art-paper-band { display: block; width: 9px; height: 9px; border-radius: 50%; }
 .workbench-screen .art-paper-band--blue { background: var(--workbench-blue); }
 .workbench-screen .art-paper-band--cyan { background: var(--workbench-cyan); }
 .workbench-screen .art-paper-band--green { background: var(--workbench-green); }
 .workbench-screen .art-paper-band--orange { background: #f18a36; }
 .workbench-screen .art-paper-band--paper { background: #d9e0dd; }
 .workbench-screen .art-paper-band--mixed { background: #efb63f; }
+.workbench-screen .skin-art--paper:after {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  width: 58px;
+  height: 58px;
+  border: 0;
+  background-color: transparent;
+  background-image: url('/pets/mascot-spritesheet.webp');
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 800% 1100%;
+  content: "";
+  transform: none;
+}
 .workbench-screen .theme-card__body { min-height: 150px; }
 .workbench-screen .theme-card__body-copy { min-width: 0; flex: 1; }
 .workbench-screen .theme-card__summary {
