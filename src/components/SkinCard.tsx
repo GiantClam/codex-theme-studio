@@ -18,6 +18,7 @@ export function SkinArt({ skin, compact = false }: { skin: SkinSummary; compact?
       {skin.art === 'green' && <><span className="art-green-circle" /><span className="art-label">GREEN / ROOM</span></>}
       {skin.art === 'miku' && <><span className="art-signal">/// 39</span><span className="art-label">SIGNAL / 2D</span></>}
       {skin.art === 'paper' && <><span className="art-paper-line" aria-hidden="true">{paletteBands.map((palette) => <span className={`art-paper-band art-paper-band--${palette}`} key={palette} />)}</span><span className="art-label">PALETTE / {skin.palette.join(' + ') || 'PAPER'}</span></>}
+      {skin.petPreviewUrl && <span className="skin-art__pet-polaroid" role="img" aria-label={`${skin.pet?.displayName ?? skin.title} Pet preview`}><span className="skin-art__pet-image" /></span>}
     </div>
   )
 }
@@ -34,7 +35,6 @@ export function SkinCard({ skin }: { skin: SkinSummary }) {
       <Link href={`/skins/${skin.slug}`} className="skin-card__visual-link theme-card__visual-link">
         <SkinArt skin={skin} />
         <span className="skin-card__badge theme-card__badge">{skin.targets.length === 2 ? 'CODEX + CHATGPT' : skin.targets[0] === 'codex' ? 'CODEX' : 'CHATGPT'}</span>
-        {skin.hasPet && <span className="skin-card__pet-badge theme-card__pet-badge">INCLUDES PET</span>}
         <span className="skin-card__quick">View theme ↗</span>
       </Link>
       <div className="skin-card__body theme-card__body card-body">

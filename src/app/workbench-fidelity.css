@@ -348,21 +348,6 @@
   letter-spacing: .08em;
 }
 
-.workbench-screen .theme-card__pet-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 2;
-  padding: 4px 6px;
-  border: 1px solid rgba(23, 52, 73, .2);
-  background: rgba(255, 255, 255, .92);
-  color: var(--workbench-ink);
-  font-family: var(--workbench-mono);
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: .08em;
-}
-
 .workbench-screen .theme-card:nth-child(1) .theme-card__badge { background: var(--workbench-cyan); }
 
 .workbench-screen .theme-card__body {
@@ -627,20 +612,45 @@
 .workbench-screen .art-paper-band--orange { background: #f18a36; }
 .workbench-screen .art-paper-band--paper { background: #d9e0dd; }
 .workbench-screen .art-paper-band--mixed { background: #efb63f; }
-.workbench-screen .skin-art--has-pet:after {
+.workbench-screen .skin-art__pet-polaroid {
   position: absolute;
-  right: 14px;
+  right: 12px;
   bottom: 12px;
-  width: 58px;
-  height: 58px;
-  border: 0;
-  background-color: transparent;
+  z-index: 3;
+  width: 76px;
+  padding: 5px 5px 17px;
+  border: 1px solid rgba(23, 52, 73, .18);
+  background: #fff;
+  box-shadow: 3px 4px 0 rgba(23, 52, 73, .13), 0 8px 16px rgba(23, 52, 73, .16);
+  transform: rotate(4deg);
+  transform-origin: 85% 100%;
+  transition: transform .2s ease;
+}
+.workbench-screen .skin-art__pet-polaroid::after {
+  position: absolute;
+  right: 5px;
+  bottom: 3px;
+  left: 5px;
+  color: var(--workbench-muted);
+  content: "PET";
+  font-family: var(--workbench-mono);
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-align: center;
+}
+.workbench-screen .skin-art__pet-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: #f1f3ef;
   background-image: var(--pet-image);
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: 800% 1100%;
-  content: "";
-  transform: none;
+}
+.workbench-screen .theme-card:hover .skin-art__pet-polaroid {
+  transform: rotate(0deg) translateY(-2px);
 }
 .workbench-screen .theme-card__body { min-height: 150px; }
 .workbench-screen .theme-card__body-copy { min-width: 0; flex: 1; }
@@ -708,6 +718,15 @@
   .workbench-footer { display: block; margin-top: 0; padding-bottom: 26px; }
   .workbench-footer__nav { justify-content: flex-start; margin-top: 22px; }
   .workbench-footer__meta { justify-content: flex-start; margin-top: 20px; text-align: left; }
+}
+
+@media (max-width: 480px) {
+  .workbench-screen .skin-art__pet-polaroid {
+    right: 10px;
+    bottom: 10px;
+    width: 68px;
+    padding: 4px 4px 15px;
+  }
 }
 
 @media (max-width: 480px) {
