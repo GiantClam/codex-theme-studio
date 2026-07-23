@@ -39,6 +39,11 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
         if (typeof body[field] === 'string' && body[field].trim()) skinData[field] = body[field].trim()
       }
       if (typeof body.status === 'string' && skinStatuses.has(body.status)) skinData.status = body.status
+      if (body.status === 'published' && (skin.status !== 'published' || !skin.reviewedAt)) {
+        const reviewedAt = new Date().toISOString()
+        skinData.reviewedAt = reviewedAt
+        skinData.publishedAt = skin.publishedAt || reviewedAt
+      }
       if (Object.keys(skinData).length > 0) {
         skin = await payload.update({ collection: 'skins', id: skin.id, data: skinData, overrideAccess: true, disableTransaction: true })
       }

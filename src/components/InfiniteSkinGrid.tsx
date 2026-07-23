@@ -43,8 +43,8 @@ export function InfiniteSkinGrid({ initialSkins, initialTotal }: { initialSkins:
     setIsLoading(true)
 
     try {
-      const lastSkin = skinsRef.current[skinsRef.current.length - 1]
-      const reviewedBefore = lastSkin?.reviewedAt
+      const lastReviewedSkin = [...skinsRef.current].reverse().find((skin) => skin.reviewedAt)
+      const reviewedBefore = lastReviewedSkin?.reviewedAt
       if (!reviewedBefore) {
         setHasMore(false)
         return
