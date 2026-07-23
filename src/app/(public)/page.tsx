@@ -1,14 +1,15 @@
 import Link from 'next/link'
 
+import { InfiniteSkinGrid } from '@/components/InfiniteSkinGrid'
 import { PublicWorkspace } from '@/components/PublicWorkspace'
-import { SkinCard } from '@/components/SkinCard'
-import { listPublicSkins } from '@/lib/skins/catalog'
+import { listPublicSkinsPage } from '@/lib/skins/catalog'
 import { CODEX_THEME_STUDIO_SKILL_URL } from '@/lib/skill'
 
 export const dynamic = 'force-dynamic'
+const HOME_PAGE_SIZE = 30
 
 export default async function HomePage() {
-  const skins = await listPublicSkins({ limit: 5 })
+  const page = await listPublicSkinsPage({ limit: HOME_PAGE_SIZE, sort: 'recent' })
   return (
     <PublicWorkspace current="gallery">
       <section className="screen workbench-screen screen-gallery is-visible">
@@ -20,7 +21,7 @@ export default async function HomePage() {
           <div className="stamp">WORKSPACE<br />READY</div>
         </div>
         <div className="section-heading"><div><span className="section-index">01</span><h2>Fresh workbench themes</h2></div><Link className="text-action" href="/search">View all themes <span>↗</span></Link></div>
-        <div className="masonry-grid theme-grid">{skins.map((skin) => <SkinCard key={skin.slug} skin={skin} />)}</div>
+        <InfiniteSkinGrid initialSkins={page.items} initialTotal={page.total} />
       </section>
     </PublicWorkspace>
   )

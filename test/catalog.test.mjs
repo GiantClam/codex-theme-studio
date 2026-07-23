@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 
-import { mapPayloadSkin } from '../src/lib/skins/catalog.ts'
+import { listPublishedSkins, mapPayloadSkin } from '../src/lib/skins/catalog.ts'
 
 const baseSkin = {
   slug: 'neon-companion',
@@ -47,4 +47,12 @@ test('does not expose a Pet when paired metadata is incomplete', () => {
   assert.equal(skin.hasPet, false)
   assert.equal(skin.pet, null)
   assert.equal(skin.petPreviewUrl, null)
+})
+
+test('paginates the fixture catalog in recent-first order', () => {
+  const firstPage = listPublishedSkins({ limit: 2 })
+  const secondPage = listPublishedSkins({ limit: 2, reviewedBefore: firstPage.at(-1).reviewedAt })
+
+  assert.deepEqual(firstPage.map((skin) => skin.slug), ['midnight-arcana', 'oxide-field'])
+  assert.deepEqual(secondPage.map((skin) => skin.slug), ['green-room', 'miku-signal'])
 })

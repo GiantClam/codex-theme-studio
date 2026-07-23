@@ -276,6 +276,17 @@
   column-gap: 15px;
 }
 
+.workbench-screen .skin-grid-loader {
+  min-height: 44px;
+  padding: 20px 0 4px;
+  color: var(--workbench-muted);
+  font-family: var(--workbench-mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .workbench-screen .skin-card,
 .workbench-screen .result-card {
   break-inside: avoid;
